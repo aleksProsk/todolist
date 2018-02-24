@@ -25,7 +25,7 @@ SECRET_KEY = 'yij!3teb0z7n@r14s5kj20(6zamb@&u6jzg3t@=28siko_eyc#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'alladdin.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'alladdin.pythonanywhere.com', 'Alladdin.pythonanywhere.com']
 
 
 # Application definition

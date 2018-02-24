@@ -34,7 +34,7 @@ Todo-list
     {% if user == post.author %}
     <h2>{{post.title}}</h2>
     <h4>{{post.text}}</h4>
-    <h5>published: {{post.published_date}}</h5>
+    <h5>Added: {{post.published_date}}</h5>
     <div class="btn-group btn-gruop-justified">
     <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
     <a class="btn btn-success" href="{% url 'post_delete' pk=post.pk %}">Done</a>

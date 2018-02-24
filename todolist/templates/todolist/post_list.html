@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<html>
+<head>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/todolist.css' %}">
+<title>
+Todo-list
+</title>
+</head>
+<body>
+<div class="page-header">
+<h1>
+Todo-list
+</h1>
+</div>
+<div>
+<form method="POST" class="post-form">{% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="btn btn-info btn-lg" name='add_button'>Add</button>
+</form>
+</div>
+<div>
+{% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <h4>{{post.text}}</h4>
+    <h5>published: {{post.published_date}}</h5>
+    <div class="btn-group btn-gruop-justified">
+    <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
+    <a class="btn btn-success" href="{% url 'post_delete' pk=post.pk %}">Done</a>
+    </div>
+{% endfor %}
+</div>
+</body>
+</html>

@@ -15,13 +15,22 @@ Todo-list
 </h1>
 </div>
 <div>
+
+{% if user.is_authenticated %}
+<p class="top-menu">Hello, {{ user.username }}! <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
 <form method="POST" class="post-form">{% csrf_token %}
 {{form.as_p}}
 <button type="submit" class="btn btn-info btn-lg" name='add_button'>Add</button>
 </form>
+{% else %}
+<a href="{% url 'login' %}" class="top-menu">Authorize</a>
+{% endif %}
+
 </div>
 <div>
 {% for post in posts %}
+    {% if user.is_authenticated %}
+    {% if user == post.author %}
     <h2>{{post.title}}</h2>
     <h4>{{post.text}}</h4>
     <h5>published: {{post.published_date}}</h5>
@@ -29,6 +38,8 @@ Todo-list
     <a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}">Edit</a>
     <a class="btn btn-success" href="{% url 'post_delete' pk=post.pk %}">Done</a>
     </div>
+    {% endif %}
+    {% endif %}
 {% endfor %}
 </div>
 </body>
